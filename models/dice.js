@@ -1,12 +1,12 @@
 const conection = require('../infraestrutura/conection');
 class Dice {
-    createDice(dice) {
+    createDice(dice,res) {
         const sql = 'INSERT INTO Dices SET ?'
         conection.query(sql, dice, (erro, resp) => {
             if(erro){
-                console.log(erro);
-            } else {
-                console.log(resp);
+                res.status(400).json(erro);
+            } else { 
+                res.status(201).json(resp);
             }
         })
     }

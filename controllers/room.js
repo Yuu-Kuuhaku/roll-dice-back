@@ -5,8 +5,8 @@ module.exports = app => {
 
     app.post('/room', (req, res) => {
         const room = req.body;
-        Room.createRoom(room);
-        res.send('salvou');
+        Room.createRoom(room, res);
+       
 
     })
 }

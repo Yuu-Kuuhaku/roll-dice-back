@@ -1,12 +1,12 @@
 const conection = require('../infraestrutura/conection');
 class Room {
-    createRoom(room) {
+    createRoom(room, res) {
         const sql = 'INSERT INTO Rooms SET ?'
         conection.query(sql, room, (erro, resp) => {
             if(erro){
-                console.log(erro);
-            } else {
-                console.log(resp);
+                res.status(400).json(erro);
+            } else { 
+                res.status(201).json(resp);
             }
         })
     }

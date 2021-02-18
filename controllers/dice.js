@@ -5,8 +5,7 @@ module.exports = app => {
 
     app.post('/dice', (req, res) => {
         const dice = req.body;
-        Dice.createDice(dice);
-        res.send('salvou');
+        Dice.createDice(dice, res);
 
     })
 }
