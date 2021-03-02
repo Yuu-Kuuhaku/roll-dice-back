@@ -3,7 +3,7 @@ const consign = require('consign');
 const bodyParser = require('body-parser');
 const { router } = require('../routes');
 
-module.exports = ()=>{
+const CustomExpress = ()=>{
     const app = express();
     app.use(bodyParser.json());
     app.use(router);
@@ -11,3 +11,4 @@ module.exports = ()=>{
     
     return app
 }
+ export { CustomExpress };
