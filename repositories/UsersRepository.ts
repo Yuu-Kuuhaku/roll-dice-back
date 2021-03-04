@@ -6,26 +6,22 @@ const moment = require('moment');
 class UsersRepository {
     private conected ;
     
-    createUser(user) {
-        console.log(user);
+    async createUser(user) {
         const createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
         const sql = 'INSERT INTO Users SET ?'
         user = {...user, createdAt}
-        Conection().then(data => {
-            data.query(sql, user, (erro, resp) => {
-                console.log(erro);
-                console.log(resp);
-                if(erro){
-                    return erro;
-                } else { 
-                    return resp;
-                }
-            })
-        }).catch(error => {
-        console.log(error)
+        const data = await Conection();
+      
+        let teste = data.query(sql, user, (error, results, fields) => {
+            
+            if(error){
+                return error;
+            } else { 
+                return fields;
+            }
         });
-       
-       
+        return teste;
+      
     }
 
     list() {

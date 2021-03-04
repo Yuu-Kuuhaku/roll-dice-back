@@ -15,17 +15,18 @@ class UserController {
             if(password.length < 6){
                 res.status(400).json({error: 'senha precisa ter mais de 5 caracteres' });
             } else {
-                bcrypt.hash(password, 10, (error, hash)=>{
+                bcrypt.hash(password, 10, async (error, hash)=>{
                     if(error){
                         res.status(400).json(error);
                     }
 
-                    const user = usersRepository.createUser({
+                    const user = await usersRepository.createUser({
                         name,
                         password: hash,
                         nick,
                         createdAt
                     });
+                    console.log(user);
                     console.log(user);
                })
                

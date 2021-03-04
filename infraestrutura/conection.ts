@@ -1,5 +1,4 @@
-
-const mysql = require('mysql');
+import * as mysql from 'mysql';
 
 
     const Conection = async () => {
